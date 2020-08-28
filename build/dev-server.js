@@ -32,9 +32,9 @@ apiRoutes.get('/getDiscList', function (req, res) {
       referer: 'https://c.y.qq.com/',
       host: 'c.y.qq.com'
     },
-    params: req.query
-  }).then((response) => {
-    res.json(response.data)
+    params: req.query   // req是我们前端的请求
+  }).then((response) => {   // 这里的response是qq音乐返回的
+    res.json(response.data)   // 然后我们把qq音乐返回的信息转换成json返回给我们的前端
   }).catch((e) => {
     console.log(e)
   })

@@ -59,7 +59,7 @@
       clearTimeout(this.timer)
     },
     methods: {
-      _setSliderWidth(isResize) {
+      _setSliderWidth(isResize) {   // 获取slider的宽度
         this.children = this.$refs.sliderGroup.children
 
         let width = 0
@@ -76,7 +76,7 @@
         }
         this.$refs.sliderGroup.style.width = width + 'px'
       },
-      _initSlider() {
+      _initSlider() {   // 初始化slider，也就是一个better-scroll
         this.slider = new BScroll(this.$refs.slider, {
           scrollX: true,
           scrollY: false,
@@ -152,7 +152,7 @@
         height: 8px
         border-radius: 50%
         background: $color-text-l
-        &.active
+        &.active    /*当dots滑动到某处时，是active状态，改变此状态的样式*/
           width: 20px
           border-radius: 5px
           background: $color-text-ll

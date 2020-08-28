@@ -1,7 +1,7 @@
 <template>
   <div class="singer" ref="singer">
     <list-view @select="selectSinger" :data="singers" ref="list"></list-view>
-    <router-view></router-view>
+    <router-view></router-view> <!--挂载子路由-->
   </div>
 </template>
 
@@ -33,7 +33,7 @@
         this.$refs.list.refresh()
       },
       selectSinger(singer) {
-        this.$router.push({
+        this.$router.push({   // 编程式的跳转接口
           path: `/singer/${singer.id}`
         })
         this.setSinger(singer)

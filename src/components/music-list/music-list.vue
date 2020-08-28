@@ -3,8 +3,8 @@
     <div class="back" @click="back">
       <i class="icon-back"></i>
     </div>
-    <h1 class="title" v-html="title"></h1>
-    <div class="bg-image" :style="bgStyle" ref="bgImage">
+    <h1 class="title" v-html="title"></h1>    <!--歌手名-->
+    <div class="bg-image" :style="bgStyle" ref="bgImage">   <!--歌手图片-->
       <div class="play-wrapper">
         <div ref="playBtn" v-show="songs.length>0" class="play" @click="random">
           <i class="icon-play"></i>
@@ -75,7 +75,7 @@
     mounted() {
       this.imageHeight = this.$refs.bgImage.clientHeight
       this.minTransalteY = -this.imageHeight + RESERVED_HEIGHT
-      this.$refs.list.$el.style.top = `${this.imageHeight}px`
+      this.$refs.list.$el.style.top = `${this.imageHeight}px`   // song-list的高度正好等于背景图的高度
     },
     methods: {
       handlePlaylist(playlist) {
@@ -107,7 +107,7 @@
     },
     watch: {
       scrollY(newVal) {
-        let translateY = Math.max(this.minTransalteY, newVal)
+        let translateY = Math.max(this.minTransalteY, newVal)   // 设置一个最远滚动的距离
         let scale = 1
         let zIndex = 0
         let blur = 0
@@ -123,11 +123,11 @@
         this.$refs.filter.style[backdrop] = `blur(${blur}px)`
         if (newVal < this.minTransalteY) {
           zIndex = 10
-          this.$refs.bgImage.style.paddingTop = 0
+          this.$refs.bgImage.style.paddingTop = 0   // 这时将图片给隐藏起来，文字就不会被图片的z-index遮挡
           this.$refs.bgImage.style.height = `${RESERVED_HEIGHT}px`
           this.$refs.playBtn.style.display = 'none'
         } else {
-          this.$refs.bgImage.style.paddingTop = '70%'
+          this.$refs.bgImage.style.paddingTop = '70%'   // 还没滚动到那里的时候，就要重置回来
           this.$refs.bgImage.style.height = 0
           this.$refs.playBtn.style.display = ''
         }
